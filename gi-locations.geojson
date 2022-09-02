@@ -96,7 +96,9 @@
     },
     {
       "type": "Feature",
-      "properties": {"Name": "South Street + Bussey St. Rain Garden"},
+      "properties": {
+        "Name": "South Street + Bussey St. Rain Garden"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -117,6 +119,23 @@
               -71.12216502428055,
               42.29557995262288
             ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"Name":"Harrison Ave. Tree Trenches"},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.07903778553009,
+            42.332233312137106
+          ],
+          [
+            -71.07771277427673,
+            42.33312557900846
           ]
         ]
       }
