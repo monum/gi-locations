@@ -125,7 +125,9 @@
     },
     {
       "type": "Feature",
-      "properties": {"Name":"Harrison Ave. Tree Trenches"},
+      "properties": {
+        "Name": "Harrison Ave. Tree Trenches"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -137,6 +139,134 @@
             -71.07771277427673,
             42.33312557900846
           ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Washington Irving Middle School Green Infrastructure"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.12566530704498,
+          42.28334948515377
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Rafael Hernandez K-8 School Green Infrastructure"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.09783738851547,
+          42.31399458711954
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "David A. Ellis Elementary School Green Infrastructure"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.09300136566162,
+          42.31615051057707
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Jackson/Mann K-8 School and Horace Mann School for the Deaf and Hard of Hearing Green Infrastructure"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.13768428564072,
+          42.35238752497175
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Edward M. Kennedy Academy for Health Careers Green Infrastructure"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.10601276159286,
+          42.33398610884438
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Nubian Square Branch Library Green Infrastructure"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.08348488807678,
+          42.32819217613913
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "East Boston Branch Library Green Infrastructure"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.02820187807083,
+          42.37792686588098
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "BCYF Gallivan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.08218938112259,
+          42.27521899796619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "BCYF Vine Street Community Garden"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0765889286995,
+          42.32689729206854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"Name":"BCYF Pino Community Garden"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.01075679063797,
+          42.388959256726906
         ]
       }
     }
