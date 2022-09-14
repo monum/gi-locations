@@ -165,9 +165,9 @@
         'circle-color': 'red',
         'circle-stroke-color': 'white'
     },
-    'filter': ['==', '$Location_Type', 'School']
+    'filter': ["==", ["get", "Location_Type"],"School"]
   });
-  
+  /*
    map.addLayer({
       'id': 'gi-library-layer',
       'type': 'circle',
@@ -180,10 +180,8 @@
     },
     'filter': ['==', '$Location_Type', 'Library']
   });
-  
+  */
       
-   
-  
     map.on('click', 'csvData', function (e) {
               var coordinates = e.features[0].geometry.coordinates.slice();
 
