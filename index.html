@@ -167,7 +167,7 @@
     },
     'filter': ["==", ["get", "Location_Type"],"School"]
   });
-  /*
+  
    map.addLayer({
       'id': 'gi-library-layer',
       'type': 'circle',
@@ -178,9 +178,21 @@
         'circle-color': 'blue',
         'circle-stroke-color': 'white'
     },
-    'filter': ['==', '$Location_Type', 'Library']
+    'filter': ["==", ["get", "Location_Type"],"Library"]
   });
-  */
+      
+   map.addLayer({
+      'id': 'gi-library-layer',
+      'type': 'circle',
+      'source': 'gi',
+        'paint': {
+        'circle-radius': 4,
+        'circle-stroke-width': 2,
+        'circle-color': 'blue',
+        'circle-stroke-color': 'white'
+    },
+    'filter': ["==", ["get", "Location_Type"],"Community Center"]
+  });
       
     map.on('click', 'csvData', function (e) {
               var coordinates = e.features[0].geometry.coordinates.slice();
