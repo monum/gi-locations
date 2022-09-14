@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css" type="text/css">
   <script src='https://npmcdn.com/csv2geojson@latest/csv2geojson.js'></script>
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
-  <!--<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>-->
   <style>
     body {
       margin: 0;
@@ -153,6 +152,35 @@
     },
     'filter': ['==', '$type', 'Point']
   });
+      
+  map.addLayer({
+      'id': 'gi-schools-layer',
+      'type': 'circle',
+      'source': 'gi',
+        'paint': {
+        'circle-radius': 4,
+        'circle-stroke-width': 2,
+        'circle-color': 'red',
+        'circle-stroke-color': 'white'
+    },
+    'filter': ['==', '$Location_Type', 'School']
+  });
+  
+   map.addLayer({
+      'id': 'gi-schools-layer',
+      'type': 'circle',
+      'source': 'gi',
+        'paint': {
+        'circle-radius': 4,
+        'circle-stroke-width': 2,
+        'circle-color': 'blue',
+        'circle-stroke-color': 'white'
+    },
+    'filter': ['==', '$Location_Type', 'Library']
+  });
+  
+      
+   
   
     map.on('click', 'csvData', function (e) {
               var coordinates = e.features[0].geometry.coordinates.slice();
