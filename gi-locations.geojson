@@ -230,7 +230,7 @@
       "type": "Feature",
       "properties": {
         "Name": "East Boston Branch Library Green Infrastructure",
-        "Location_Type":"Community Center"
+        "Location_Type":"Library"
       },
       "geometry": {
         "type": "Point",
