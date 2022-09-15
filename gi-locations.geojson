@@ -31,6 +31,19 @@
     {
       "type": "Feature",
       "properties": {
+        "Name": "New England Ave. GI"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.07809364795685,
+          42.29016145802966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "Name": "Audubon Circle"
       },
       "geometry": {
@@ -58,6 +71,19 @@
               42.34673603627118
             ]
           ]
+        ]
+      }
+    },
+        {
+      "type": "Feature",
+      "properties": {
+        "Name":"Audubon Circle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.10510617494583,
+          42.346635926402136
         ]
       }
     },
@@ -97,6 +123,19 @@
     {
       "type": "Feature",
       "properties": {
+        "Name": "Central Square"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0394698381424,
+          42.37500028732605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "Name": "South Street + Bussey St. Rain Garden"
       },
       "geometry": {
@@ -126,6 +165,19 @@
     {
       "type": "Feature",
       "properties": {
+        "Name": "South Street + Bussey St. Rain Garden"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.12212613224983,
+          42.295519441068315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "Name": "Harrison Ave. Tree Trenches"
       },
       "geometry": {
@@ -139,6 +191,20 @@
             -71.07771277427673,
             42.33312557900846
           ]
+        ]
+      }
+    },
+    ,
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Harrison Ave. Tree Trenches"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.07834577560425,
+          42.33273893158503
         ]
       }
     },
