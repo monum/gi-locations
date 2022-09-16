@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -6,12 +5,13 @@
   <meta charset='utf-8' />
   <title>Green Infrastructure Sites | Boston</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css" type="text/css">
   <script src='https://npmcdn.com/csv2geojson@latest/csv2geojson.js'></script>
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
+<style>
   <style>
     body {
       margin: 0;
@@ -23,6 +23,10 @@
       top: 0;
       bottom: 0;
       width: 100%;
+    }
+
+    .mapboxgl-marker {
+        cursor: pointer;
     }
 
     .mapboxgl-popup {
@@ -77,11 +81,12 @@
       width: 315px!important;
     }
   </style>
+</style>
 </head>
-
 <body>
-  <div id='map'></div>
-  <script>
+<div id="map"></div>
+<script>
+    
     var locationData;
     
     var transformRequest = (url, resourceType) => {
@@ -112,10 +117,9 @@
       
         return matchingFeatures;
       };
-    
-    
-    
+
     mapboxgl.accessToken = 'pk.eyJ1IjoibmV3dXJiYW5tZWNocyIsImEiOiJja2JiamtmcHEwMXpiMnJwcmJqMnZtcm0wIn0.d3fLu06Sb9axgVKWKNpdfA';
+    
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/light-v10',
@@ -125,7 +129,7 @@
       attributionControl: false,
       transformRequest: transformRequest
     });
-    
+
     map.addControl(new mapboxgl.AttributionControl({
       customAttribution: "Mayor's Office of New Urban Mechanics"
     }));
@@ -138,136 +142,63 @@
       map.addSource('gi', {
         type: 'geojson',
         data: 'gi-locations.geojson'
-    });
- 
-    /*
+       });
+
     map.addLayer({
-      'id': 'gi-schools-layer',
-      'type': 'circle',
+      'id': 'gi-line-layer',
+      'type': 'line',
       'source': 'gi',
-        'paint': {
-        'circle-radius': 4,
-        'circle-stroke-width': 2,
-        'circle-color': 'blue',
-        'circle-stroke-color': 'white'
+      'paint': {
+        'line-width': 6,
+        'line-color': "#09bb9f"
     },
-    'filter': ['==', '$type', 'Point']
+    'filter': ['==', '$type', 'LineString']
   });
-  */
-      
+
   map.addLayer({
-      'id': 'gi-schools-layer',
-      'type': 'circle',
+      'id': 'gi-polygon-layer',
+      'type': 'fill',
       'source': 'gi',
-        'paint': {
-        'circle-radius': 4,
-        'circle-stroke-width': 2,
-        'circle-color': 'red',
-        'circle-stroke-color': 'white'
+      'paint': {
+        'fill-color': '#0080ff',
+        'fill-opacity': 0.8
     },
-    'filter': ["==", ["get", "Location_Type"],"School"]
-  });
-  
-   map.addLayer({
-      'id': 'gi-library-layer',
-      'type': 'circle',
-      'source': 'gi',
-        'paint': {
-        'circle-radius': 4,
-        'circle-stroke-width': 2,
-        'circle-color': 'blue',
-        'circle-stroke-color': 'white'
-    },
-    'filter': ["==", ["get", "Location_Type"],"Library"]
-  });
-      
-   map.addLayer({
-      'id': 'gi-cc-layer',
-      'type': 'circle',
-      'source': 'gi',
-        'paint': {
-        'circle-radius': 4,
-        'circle-stroke-width': 2,
-        'circle-color': 'green',
-        'circle-stroke-color': 'white'
-    },
-    'filter': ["==", ["get", "Location_Type"],"Community Center"]
-  });
-      
-            map.on('click', 'gi-cc-layer', function (e) {
-              var coordinates = e.features[0].geometry.coordinates.slice();
-    
-              var description = 'test';
-              //var description = '<h3>Municipal Lot in ' + e.features[0].properties.Neighborhood + '</h3>' + '<h4>' + '<strong>' + 'Address: ' + '</strong>' + e.features[0].properties.Address + '</h4>';
+    'filter': ['==', '$type', 'Polygon']
+    });
+    });
 
-              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-              }
+    d3.json("gi-locations.geojson").then(function(data){ 
+        var col;
+        for (var i=0; i < data.features.length; i++) {
+            if (data.features[i].geometry.type == "Point"){
+                var lt = data.features[i].properties.Location_Type;
+                if (lt == "School"){
+                    col = '#ff5f4c';
+                } else if (lt == "Library") {
+                    col = '#00dca6';
+                } else if (lt == "Community Center") {
+                    col = '#18a1cd';
+                } else {
+                    col = '#2ecc40';
+                }
 
-              new mapboxgl.Popup()
-                .setLngLat(coordinates)
-                .setHTML(description)
+                const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+                
+                    '<h3>'+data.features[i].properties.Location_Type+'</h3><h4>'+data.features[i].properties.Name+'</h4>'
+
+                );
+                 
+                const el = document.createElement('div');
+                el.id = 'marker';
+
+                new mapboxgl.Marker({ color: col, scale: .8, rotation: 0 })
+                .setPopup(popup)
+                .setLngLat(data.features[i].geometry.coordinates)
                 .addTo(map);
-            });
-      
-             map.on('click', 'gi-library-layer', function (e) {
-              var coordinates = e.features[0].geometry.coordinates.slice();
-    
-              var description = 'test';
-              //var description = '<h3>Municipal Lot in ' + e.features[0].properties.Neighborhood + '</h3>' + '<h4>' + '<strong>' + 'Address: ' + '</strong>' + e.features[0].properties.Address + '</h4>';
-
-              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-              }
-
-              new mapboxgl.Popup()
-                .setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(map);
-            });
-      
-             map.on('click', 'gi-schools-layer', function (e) {
-              var coordinates = e.features[0].geometry.coordinates.slice();
-    
-              var description = 'test';
-              //var description = '<h3>Municipal Lot in ' + e.features[0].properties.Neighborhood + '</h3>' + '<h4>' + '<strong>' + 'Address: ' + '</strong>' + e.features[0].properties.Address + '</h4>';
-
-              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-              }
-
-              new mapboxgl.Popup()
-                .setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(map);
-            });
-
-            /*
-            map.on('mouseenter', 'csvData', function () {
-              map.getCanvas().style.cursor = 'pointer';
-            });
-
-            map.on('mouseleave', 'places', function () {
-              map.getCanvas().style.cursor = '';
-            });
-            */
-
-            map.addControl(
-              new MapboxGeocoder({
-                accessToken: mapboxgl.accessToken,
-                mapboxgl: mapboxgl,
-                bbox: [-71.190336,42.240688,-70.985076,42.393463],
-                proximity: {
-                  longitude: -71.080463,
-                  latitude: 42.330631
-                },
-                localGeocoder: forwardGeocoder,
-                placeholder: 'Search by neighborhood or address'
-              })
-            );
-});
-  </script>
-
+            }
+        }
+    });
+</script>
+ 
 </body>
-
 </html>
