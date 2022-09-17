@@ -4,7 +4,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "New England Ave. GI",
+        "Name": "New England Ave. Green Infrastructure",
         "Location_Type":"Streetscape Green Infrastructure"
       },
       "geometry": {
@@ -32,7 +32,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "New England Ave. GI",
+        "Name": "New England Ave. Green Infrastructure",
         "Location_Type":"Streetscape Green Infrastructure"
       },
       "geometry": {
