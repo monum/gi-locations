@@ -318,7 +318,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "BCYF Gallivan (adjacent to Gallivan Boulevard, a property of the Boston Housing Authority",
+        "Name": "BCYF Gallivan (adjacent to Gallivan Boulevard, a property of the Boston Housing Authority)",
         "Location_Type":"Community Center"
       },
       "geometry": {
