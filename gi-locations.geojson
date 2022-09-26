@@ -314,45 +314,6 @@
           42.37792686588098
         ]
       }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "Name": "BCYF Gallivan (adjacent to Gallivan Boulevard, a property of the Boston Housing Authority)",
-        "Location_Type":"Community Center"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.08218938112259,
-          42.27521899796619
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "Name": "BCYF Vine Street Community Garden",
-        "Location_Type":"Community Center"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.0765889286995,
-          42.32689729206854
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {"Name":"BCYF Pino Community Garden","Location_Type":"Community Center"},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.01075679063797,
-          42.388959256726906
-        ]
-      }
     }
   ]
 }
